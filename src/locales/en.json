@@ -1,0 +1,59 @@
+{
+  "translation": {
+    "site": {
+      "title": "Book Library"
+    },
+    "nav": {
+      "links": {
+        "home": "Home"
+      },
+      "search": {
+        "placeholder": "Search..."
+      },
+      "user-profile": {
+        "profile": "Profile",
+        "settings": "Settings",
+        "logout": "Logout"
+      }
+    },
+    "home": {
+      "books_list_title": "Books List",
+      "add_book_button": "Add a book"
+    },
+    "add_book": {
+      "title": "Add a book",
+      "form": {
+        "title_label": "Title",
+        "title_placeholder": "Enter the book title",
+        "title_description": "100 characters maximum",
+        "author_label": "Author",
+        "author_placeholder": "Enter the author's name",
+        "description_label": "Description",
+        "description_placeholder": "Enter the book description",
+        "submit_button": "Add",
+        "cancel_button": "Cancel",
+        "success_message": "The book has been successfully added",
+        "error_message": "An error occurred while adding the book"
+      },
+      "errors": {
+        "title_required": "The title is required",
+        "title_max_length": "The title must not exceed 100 characters",
+        "author_name_required": "The author is required",
+        "description_required": "The description is required"
+      }
+    },
+    "book_details": {
+      "delete_success_toast": "The book has been deleted successfully",
+      "delete_error_toast": "An error occurred while deleting the book"
+    },
+    "language": {
+      "fr": "French",
+      "en": "English"
+    },
+    "theme": {
+      "light": "Light",
+      "dark": "Dark",
+      "system": "System"
+    }
+  }
+}

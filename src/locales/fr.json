@@ -1,0 +1,59 @@
+{
+  "translation": {
+    "site": {
+      "title": "Bibliothèque de livres"
+    },
+    "nav": {
+      "links": {
+        "home": "Accueil"
+      },
+      "search": {
+        "placeholder": "Rechercher..."
+      },
+      "user-profile": {
+        "profile": "Profil",
+        "settings": "Paramètres",
+        "logout": "Déconnexion"
+      }
+    },
+    "home": {
+      "books_list_title": "Liste des livres",
+      "add_book_button": "Ajouter un livre"
+    },
+    "add_book": {
+      "title": "Ajouter un livre",
+      "form": {
+        "title_label": "Titre",
+        "title_placeholder": "Entrez le titre du livre",
+        "title_description": "100 caractères maximum",
+        "author_label": "Auteur",
+        "author_placeholder": "Entrez le nom de l'auteur",
+        "description_label": "Description",
+        "description_placeholder": "Entrez la description du livre",
+        "submit_button": "Ajouter",
+        "cancel_button": "Annuler",
+        "success_message": "Le livre a été ajouté avec succès",
+        "error_message": "Une erreur s'est produite lors de l'ajout du livre"
+      },
+      "errors": {
+        "title_required": "Le titre est requis",
+        "title_max_length": "Le titre ne doit pas dépasser 100 caractères",
+        "author_name_required": "L'auteur est requis",
+        "description_required": "La description est requise"
+      }
+    },
+    "book_details": {
+      "delete_success_toast": "Le livre a été supprimé avec succès",
+      "delete_error_toast": "Une erreur s'est produite lors de la suppression du livre"
+    },
+    "language": {
+      "fr": "Français",
+      "en": "Anglais"
+    },
+    "theme": {
+      "light": "Clair",
+      "dark": "Sombre",
+      "system": "Système"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+import { getBooks } from '@/api/services/book.service'
+import { cn } from '@/lib/utils'
+import { useQuery } from '@tanstack/react-query'
+import { Link } from 'react-router-dom'
+
+const BooksList = () => {
+  const { data: books } = useQuery({
+    queryKey: ['books'],
+    queryFn: getBooks,
+  })
+
+  if (!books) {
+    return <div>Loading...</div>
+  }
+
+  return (
+    <section className="flex flex-wrap gap-6">
+      {books.map((book) => (
+        <Link key={book.id} to={`/books/${book.id}`} className="select-none">
+          <div className="overflow-hidden rounded-md">
+            <img
+              src="https://images.unsplash.com/photo-1611348586804-61bf6c080437?w=300&dpr=2&q=80"
+              alt="Book cover"
+              className={cn(
+                'aspect-[3/4] h-80 w-60 object-cover transition-all hover:scale-105'
+              )}
+            />
+          </div>
+          <h3>{book.title}</h3>
+          <span>{book.description}</span>
+        </Link>
+      ))}
+    </section>
+  )
+}
+
+export default BooksList
