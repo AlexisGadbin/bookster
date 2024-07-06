@@ -46,7 +46,7 @@
       "delete_success_toast": "The book has been deleted successfully",
       "delete_error_toast": "An error occurred while deleting the book"
     },
-    "language": {
+    "locales": {
       "fr": "French",
       "en": "English"
     },
@@ -54,6 +54,23 @@
       "light": "Light",
       "dark": "Dark",
       "system": "System"
+    },
+    "auth": {
+      "modal": {
+        "title": "Sign in",
+        "description": "Sign in to your account to continue"
+      },
+      "form": {
+        "username_label": "Mail",
+        "username_placeholder": "xxxx@gmail.com",
+        "password_label": "Password",
+        "password_placeholder": "12345678",
+        "sign_in_button_text": "Sign in",
+        "other_method_text": "Or continue with",
+        "providers": {
+          "google": "Google"
+        }
+      }
     }
   }
 }

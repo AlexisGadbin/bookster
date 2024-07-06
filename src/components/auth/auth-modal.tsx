@@ -1,3 +1,4 @@
+import { useTranslation } from 'react-i18next'
 import {
   Dialog,
   DialogContent,
@@ -8,14 +9,14 @@ import {
 import AuthForm from './auth-form'
 
 const AuthModal = () => {
+  const { t } = useTranslation()
+
   return (
     <Dialog defaultOpen>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Sign in</DialogTitle>
-          <DialogDescription>
-            Sign in to your account to continue
-          </DialogDescription>
+          <DialogTitle>{t('auth.modal.title')}</DialogTitle>
+          <DialogDescription>{t('auth.modal.description')}</DialogDescription>
         </DialogHeader>
         <AuthForm />
       </DialogContent>

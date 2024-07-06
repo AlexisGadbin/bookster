@@ -46,7 +46,7 @@
       "delete_success_toast": "Le livre a été supprimé avec succès",
       "delete_error_toast": "Une erreur s'est produite lors de la suppression du livre"
     },
-    "language": {
+    "locales": {
       "fr": "Français",
       "en": "Anglais"
     },
@@ -54,6 +54,23 @@
       "light": "Clair",
       "dark": "Sombre",
       "system": "Système"
+    },
+    "auth": {
+      "modal": {
+        "title": "Connexion",
+        "description": "Connectez vous à votre compte pour continuer sur l'application"
+      },
+      "form": {
+        "username_label": "Adresse mail",
+        "username_placeholder": "xxxx@gmail.com",
+        "password_label": "Mot de passe",
+        "password_placeholder": "12345678",
+        "sign_in_button_text": "Se connecter",
+        "other_method_text": "Ou continuer avec",
+        "providers": {
+          "google": "Google"
+        }
+      }
     }
   }
 }

@@ -66,9 +66,11 @@ const NavUserProfile = () => {
               {t('nav.user-profile.profile')}
             </DropdownMenuItem>
           </Link>
-          <DropdownMenuItem className="cursor-pointer">
-            <Link to="settings">{t('nav.user-profile.settings')}</Link>
-          </DropdownMenuItem>
+          <Link to="settings">
+            <DropdownMenuItem className="cursor-pointer">
+              {t('nav.user-profile.settings')}
+            </DropdownMenuItem>
+          </Link>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <button type="button" onClick={handleLogout} className="w-full">

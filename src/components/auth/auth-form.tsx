@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { Icons } from '../icons'
 import { Button } from '../ui/button'
 import {
@@ -17,6 +18,7 @@ import {
 import { Input } from '../ui/input'
 
 const AuthForm = () => {
+  const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
 
   const form = useForm<SignInType>({
@@ -52,9 +54,12 @@ const AuthForm = () => {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Username</FormLabel>
+                <FormLabel>{t('auth.form.username_label')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="toto@gmail.com" {...field} />
+                  <Input
+                    placeholder={t('auth.form.username_placeholder')}
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -65,9 +70,13 @@ const AuthForm = () => {
             name="password"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Password</FormLabel>
+                <FormLabel>{t('auth.form.password_label')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="toto1234" type="password" {...field} />
+                  <Input
+                    placeholder={t('auth.form.password_placeholder')}
+                    type="password"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -77,7 +86,7 @@ const AuthForm = () => {
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Sign In with Email
+            {t('auth.form.sign_in_button_text')}
           </Button>
         </form>
       </Form>
@@ -87,7 +96,7 @@ const AuthForm = () => {
         </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-2 text-muted-foreground">
-            Or continue with
+            {t('auth.form.other_method_text')}
           </span>
         </div>
       </div>
@@ -97,7 +106,7 @@ const AuthForm = () => {
         ) : (
           <Icons.google className="mr-2 h-4 w-4" />
         )}{' '}
-        Google
+        {t('auth.form.providers.google')}
       </Button>
     </div>
   )
