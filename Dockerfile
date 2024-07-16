@@ -10,20 +10,14 @@ COPY package.json package-lock.json ./
 # Installer les dépendances
 RUN npm install
 
+RUN npm i -g serve
+
 # Copier tout le reste du code de l'application
 COPY . .
 
 # Construire l'application
 RUN npm run build
 
-# Étape 2 : Servir l'application avec un serveur web
-FROM nginx:stable-alpine
+EXPOSE 3000
 
-# Copier les fichiers de build de l'étape précédente
-COPY --from=build /app/dist /usr/share/nginx/html
-
-# Exposer le port
-EXPOSE 80
-
-# Commande pour démarrer Nginx
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", "-s", "dist"]
