@@ -20,7 +20,7 @@ import {
 
 const NavUserProfile = () => {
   const { t } = useTranslation()
-  const user = useAuthenticatedUser()
+  const { user, isLoading } = useAuthenticatedUser()
 
   const logoutMutation = useMutation({
     mutationFn: logout,
@@ -36,7 +36,7 @@ const NavUserProfile = () => {
     logoutMutation.mutate()
   }
 
-  if (!user) return <AuthModal />
+  if (!user || isLoading) return <AuthModal />
 
   return (
     <DropdownMenu>

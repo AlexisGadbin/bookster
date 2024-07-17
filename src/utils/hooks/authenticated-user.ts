@@ -2,11 +2,19 @@ import { getAuthenticatedUser } from '@/api/services/auth.service'
 import { UserModel } from '@/models/user'
 import { useQuery } from '@tanstack/react-query'
 
-export const useAuthenticatedUser = (): UserModel | undefined => {
-  const { data } = useQuery({
+type UseAuthenticatedUser = {
+  user: UserModel | undefined
+  isLoading: boolean
+}
+
+export const useAuthenticatedUser = (): UseAuthenticatedUser => {
+  const { data, isLoading } = useQuery({
     queryKey: ['current-user'],
     queryFn: getAuthenticatedUser,
   })
 
-  return data
+  return {
+    user: data,
+    isLoading,
+  }
 }
