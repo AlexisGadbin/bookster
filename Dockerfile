@@ -15,6 +15,10 @@ RUN npm i -g serve
 # Copier tout le reste du code de l'application
 COPY . .
 
+# Créer un fichier .env
+# Ajouter la variable VITE_API_URL
+RUN echo "VITE_API_URL=http://185.170.58.67/api" > .env
+
 # Construire l'application
 RUN npm run build
 
