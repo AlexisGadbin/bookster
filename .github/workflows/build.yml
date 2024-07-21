@@ -3,8 +3,7 @@ name: Build
 on:
   push:
     branches:
-      - main
-      - feature/docker
+      - master
 
 env:
   REGISTRY: ghcr.io
