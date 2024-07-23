@@ -1,10 +1,10 @@
 import {
-  Drawer,
-  DrawerContent,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger,
-} from '@/components/ui/drawer'
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from '@/components/ui/sheet'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
 import BookForm from './book-form'
@@ -13,21 +13,21 @@ const AddBookButton = () => {
   const { t } = useTranslation()
 
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
+    <Sheet>
+      <SheetTrigger asChild>
         <Button>{t('home.add_book_button')}</Button>
-      </DrawerTrigger>
-      <DrawerContent>
+      </SheetTrigger>
+      <SheetContent>
         <div className="mx-auto w-full max-w-sm">
-          <DrawerHeader>
-            <DrawerTitle>{t('add_book.title')}</DrawerTitle>
-          </DrawerHeader>
+          <SheetHeader>
+            <SheetTitle>{t('add_book.title')}</SheetTitle>
+          </SheetHeader>
           <div className="p-4 pb-0">
             <BookForm />
           </div>
         </div>
-      </DrawerContent>
-    </Drawer>
+      </SheetContent>
+    </Sheet>
   )
 }
 

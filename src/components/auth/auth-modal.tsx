@@ -1,3 +1,4 @@
+import { useAuthenticatedUser } from '@/utils/hooks/authenticated-user'
 import { useTranslation } from 'react-i18next'
 import {
   Dialog,
@@ -10,9 +11,10 @@ import AuthForm from './auth-form'
 
 const AuthModal = () => {
   const { t } = useTranslation()
+  const { user, isLoading } = useAuthenticatedUser()
 
   return (
-    <Dialog defaultOpen>
+    <Dialog open={!isLoading && !user}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
           <DialogTitle>{t('auth.modal.title')}</DialogTitle>

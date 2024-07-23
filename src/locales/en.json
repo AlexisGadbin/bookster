@@ -1,7 +1,7 @@
 {
   "translation": {
     "site": {
-      "title": "Book Library"
+      "title": "Bookster"
     },
     "nav": {
       "links": {
@@ -28,6 +28,8 @@
         "title_description": "100 characters maximum",
         "author_label": "Author",
         "author_placeholder": "Enter the author's name",
+        "author_search_placeholder": "Search for an author",
+        "create_author_button": "Create an author",
         "description_label": "Description",
         "description_placeholder": "Enter the book description",
         "submit_button": "Add",

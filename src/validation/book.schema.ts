@@ -6,7 +6,7 @@ export const bookSchema = z.object({
     .min(1, 'add_book.errors.title_required')
     .max(100, 'add_book.errors.title_max_length'),
   description: z.string().min(1, 'add_book.errors.description_required'),
-  authorId: z.string().min(1, 'add_book.errors.author_required'),
+  authorName: z.string().min(1, 'add_book.errors.author_name_required'),
 })
 
 export type EditBookType = z.infer<typeof bookSchema>

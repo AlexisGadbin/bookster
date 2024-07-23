@@ -1,14 +1,12 @@
-import { getAuthors } from '@/api/services/author.service'
 import { createBook } from '@/api/services/book.service'
 import { EditBookType, bookSchema } from '@/validation/book.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
-import { DrawerClose, DrawerFooter } from '../ui/drawer'
 import {
   Form,
   FormControl,
@@ -19,13 +17,7 @@ import {
   FormMessage,
 } from '../ui/form'
 import { Input } from '../ui/input'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '../ui/select'
+import { SheetClose } from '../ui/sheet'
 import { Textarea } from '../ui/textarea'
 
 const BookForm = () => {
@@ -33,17 +25,12 @@ const BookForm = () => {
   const { t } = useTranslation()
   const queryClient = useQueryClient()
 
-  const { data: authors } = useQuery({
-    queryKey: ['authors'],
-    queryFn: getAuthors,
-  })
-
   const form = useForm<EditBookType>({
     resolver: zodResolver(bookSchema),
     defaultValues: {
       title: '',
       description: '',
-      authorId: undefined,
+      authorName: '',
     },
   })
 
@@ -111,42 +98,29 @@ const BookForm = () => {
         />
         <FormField
           control={form.control}
-          name="authorId"
+          name="authorName"
           render={({ field }) => (
             <FormItem>
               <FormLabel>{t('add_book.form.author_label')}</FormLabel>
-              <Select
-                onValueChange={field.onChange}
-                defaultValue={String(field.value)}
-              >
-                <FormControl>
-                  <SelectTrigger>
-                    <SelectValue
-                      placeholder={t('add_book.form.author_placeholder')}
-                    />
-                  </SelectTrigger>
-                </FormControl>
-                <SelectContent>
-                  {authors?.map((author) => (
-                    <SelectItem key={author.id} value={String(author.id)}>
-                      {author.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder={t('add_book.form.author_placeholder')}
+                />
+              </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
-        <DrawerFooter>
+        <div className="flex w-full flex-col gap-4">
           <p>{message ? <p>{message}</p> : null}</p>
           <Button type="submit">{t('add_book.form.submit_button')}</Button>
-          <DrawerClose asChild>
+          <SheetClose asChild>
             <Button variant="outline">
               {t('add_book.form.cancel_button')}
             </Button>
-          </DrawerClose>
-        </DrawerFooter>
+          </SheetClose>
+        </div>
       </form>
     </Form>
   )
