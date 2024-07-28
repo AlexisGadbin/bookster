@@ -10,7 +10,6 @@ import { Button } from '../ui/button'
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -86,9 +85,6 @@ const BookForm = () => {
                   placeholder={t('add_book.form.title_placeholder')}
                 />
               </FormControl>
-              <FormDescription>
-                {t('add_book.form.title_description')}
-              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
@@ -112,7 +108,6 @@ const BookForm = () => {
                     }}
                     type="file"
                     placeholder={t('add_book.form.cover_placeholder')}
-                    className="h-full"
                   />
                 </FormControl>
                 <FormMessage />
