@@ -9,7 +9,6 @@ export const getBookById = async (id: number): Promise<BookModel> => {
   return (await instance.get(`/books/${id}`)).data
 }
 
-// export const createBook = async (book: EditBookType): Promise<void> => {
 export const createBook = async (formData: FormData): Promise<void> => {
   await instance.post('/books', formData)
 }
