@@ -7,4 +7,5 @@ export type BookModel = {
   description: string
   author: AuthorModel
   contributor: UserModel
+  coverImageUrl?: string
 }
