@@ -63,6 +63,8 @@ const AuthForm = () => {
                   <Input
                     placeholder={t('auth.form.username_placeholder')}
                     {...field}
+                    id="email"
+                    type="email"
                   />
                 </FormControl>
                 <FormMessage />
