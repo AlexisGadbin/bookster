@@ -1,7 +1,8 @@
 import { BookModel } from '@/models/book'
+import { PaginatedResponse } from '@/utils/types'
 import { instance } from '../axios'
 
-export const getBooks = async (): Promise<BookModel[]> => {
+export const getBooks = async (): Promise<PaginatedResponse<BookModel>> => {
   return (await instance.get('/books')).data
 }
 

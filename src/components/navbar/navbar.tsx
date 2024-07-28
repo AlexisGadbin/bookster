@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
-import NavSearch from './nav-search'
+import AddBookButton from '../books/add-books-button'
 import NavUserProfile from './nav-user-profile'
 
 type NavLink = { name: 'home'; href: string }
@@ -25,7 +25,8 @@ const Navbar = () => {
         ))}
       </nav>
       <div className="ml-auto flex items-center space-x-4">
-        <NavSearch />
+        {/* <NavSearch /> */}
+        <AddBookButton />
         <NavUserProfile />
       </div>
     </div>

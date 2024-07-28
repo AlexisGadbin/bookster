@@ -1,8 +1,5 @@
 {
   "translation": {
-    "site": {
-      "title": "Bookster"
-    },
     "nav": {
       "links": {
         "home": "Accueil"
@@ -17,7 +14,7 @@
       }
     },
     "home": {
-      "books_list_title": "Liste des livres",
+      "books_list_title": "Livres les plus récents",
       "add_book_button": "Ajouter un livre"
     },
     "add_book": {

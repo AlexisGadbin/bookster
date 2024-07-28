@@ -4,18 +4,18 @@ import { useQuery } from '@tanstack/react-query'
 import { Link } from 'react-router-dom'
 
 const BooksList = () => {
-  const { data: books } = useQuery({
+  const { data: paginatedBooks } = useQuery({
     queryKey: ['books'],
     queryFn: getBooks,
   })
 
-  if (!books) {
+  if (!paginatedBooks) {
     return <div>Loading...</div>
   }
 
   return (
     <section className="flex flex-wrap gap-6">
-      {books.map((book) => (
+      {paginatedBooks.data.map((book) => (
         <Link key={book.id} to={`/books/${book.id}`} className="select-none">
           <div className="overflow-hidden rounded-md">
             <img

@@ -9,7 +9,7 @@ const NavSearch = () => {
       <Input
         type="search"
         placeholder={t('nav.search.placeholder')}
-        className="md:w-[100px] lg:w-[300px]"
+        className="md:w-[300px] lg:w-[500px]"
       />
     </div>
   )
