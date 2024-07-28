@@ -65,6 +65,7 @@ const AuthForm = () => {
                     {...field}
                     id="email"
                     type="email"
+                    autoComplete="email"
                   />
                 </FormControl>
                 <FormMessage />
