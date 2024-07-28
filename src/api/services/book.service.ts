@@ -1,5 +1,4 @@
 import { BookModel } from '@/models/book'
-import { EditBookType } from '@/validation/book.schema'
 import { instance } from '../axios'
 
 export const getBooks = async (): Promise<BookModel[]> => {
@@ -10,8 +9,9 @@ export const getBookById = async (id: number): Promise<BookModel> => {
   return (await instance.get(`/books/${id}`)).data
 }
 
-export const createBook = async (book: EditBookType): Promise<void> => {
-  await instance.post('/books', book)
+// export const createBook = async (book: EditBookType): Promise<void> => {
+export const createBook = async (formData: FormData): Promise<void> => {
+  await instance.post('/books', formData)
 }
 
 export const deleteBook = async (id: number): Promise<void> => {

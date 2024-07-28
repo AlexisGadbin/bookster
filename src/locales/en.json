@@ -26,6 +26,7 @@
         "title_label": "Title",
         "title_placeholder": "Enter the book title",
         "title_description": "100 characters maximum",
+        "cover_label": "Cover image",
         "author_label": "Author",
         "author_placeholder": "Enter the author's name",
         "author_search_placeholder": "Search for an author",
@@ -41,7 +42,8 @@
         "title_required": "The title is required",
         "title_max_length": "The title must not exceed 100 characters",
         "author_name_required": "The author is required",
-        "description_required": "The description is required"
+        "description_required": "The description is required",
+        "cover_image_max_size": "The cover image must not exceed 4 MB"
       }
     },
     "book_details": {

@@ -21,6 +21,7 @@ import { SheetClose } from '../ui/sheet'
 import { Textarea } from '../ui/textarea'
 
 const BookForm = () => {
+  const [coverImage, setCoverImage] = useState<File | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const { t } = useTranslation()
   const queryClient = useQueryClient()
@@ -31,10 +32,11 @@ const BookForm = () => {
       title: '',
       description: '',
       authorName: '',
+      coverImage: undefined,
     },
   })
 
-  const addBookMutation = useMutation<void, AxiosError, EditBookType>({
+  const addBookMutation = useMutation<void, AxiosError, FormData>({
     mutationFn: createBook,
     onSuccess: () => {
       form.reset()
@@ -46,7 +48,8 @@ const BookForm = () => {
         queryKey: ['books'],
       })
     },
-    onError: () => {
+    onError: (e) => {
+      console.log(e)
       setMessage(t('add_book.form.error_message'))
       setTimeout(() => {
         setMessage(null)
@@ -55,8 +58,18 @@ const BookForm = () => {
   })
 
   const onSubmit = (data: EditBookType) => {
-    addBookMutation.mutate(data)
+    const formData = new FormData()
+    formData.append('title', data.title)
+    formData.append('description', data.description)
+    formData.append('authorName', data.authorName)
+    if (data.coverImage) {
+      formData.append('coverImage', data.coverImage[0])
+    }
+
+    addBookMutation.mutate(formData)
   }
+
+  const fileRef = form.register('coverImage')
 
   return (
     <Form {...form}>
@@ -80,6 +93,41 @@ const BookForm = () => {
             </FormItem>
           )}
         />
+
+        <div className="flex gap-4">
+          <FormField
+            control={form.control}
+            name="coverImage"
+            render={() => (
+              <FormItem>
+                <FormLabel>{t('add_book.form.cover_label')}</FormLabel>
+                <FormControl>
+                  <Input
+                    {...fileRef}
+                    onChange={(e) => {
+                      if (e.target.files) {
+                        setCoverImage(e.target.files[0])
+                      }
+                      fileRef.onChange(e)
+                    }}
+                    type="file"
+                    placeholder={t('add_book.form.cover_placeholder')}
+                    className="h-full"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          {coverImage ? (
+            <img
+              className="h-24 w-24 rounded-lg object-cover"
+              src={URL.createObjectURL(coverImage)}
+              alt={t('add_book.form.cover_image')}
+            />
+          ) : null}
+        </div>
+
         <FormField
           control={form.control}
           name="description"
