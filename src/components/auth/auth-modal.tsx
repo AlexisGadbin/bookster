@@ -56,20 +56,20 @@ const SignUpModal = (props: ModalProps) => {
     <Dialog open={!isLoading && !user}>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>{t('auth.modal.sign_in.title')}</DialogTitle>
+          <DialogTitle>{t('auth.modal.sign_up.title')}</DialogTitle>
           <DialogDescription>
-            {t('auth.modal.sign_in.description')}
+            {t('auth.modal.sign_up.description')}
           </DialogDescription>
         </DialogHeader>
         <RegisterForm />
         <DialogFooter>
           <p className="text-xs text-gray-500">
-            {t('auth.modal.sign_in.no_account_text')}{' '}
+            {t('auth.modal.sign_up.already_account_text')}{' '}
             <a
               className="cursor-pointer text-primary"
               onClick={() => changeModal(false)}
             >
-              {t('auth.modal.sign_in.sign_up_link')}
+              {t('auth.modal.sign_up.sign_in_link')}
             </a>
           </p>
         </DialogFooter>
