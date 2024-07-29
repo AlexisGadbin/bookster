@@ -72,6 +72,13 @@
           "google": "Google"
         }
       }
+    },
+    "settings": {
+      "preferences": {
+        "title": "Préférences",
+        "language": "Langue d'affichage : ",
+        "theme": "Thème de l'application : "
+      }
     }
   }
 }
