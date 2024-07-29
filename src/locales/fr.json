@@ -58,15 +58,32 @@
     },
     "auth": {
       "modal": {
-        "title": "Connexion",
-        "description": "Connectez vous à votre compte pour continuer sur l'application"
+        "sign_in": {
+          "title": "Connexion",
+          "description": "Connectez vous à votre compte pour continuer sur l'application",
+          "no_account_text": "Vous n'avez pas de compte ?",
+          "sign_up_link": "Inscrivez-vous ici"
+        },
+        "sign_up": {
+          "title": "Inscription",
+          "description": "Créez un compte pour accéder à toutes les fonctionnalités de l'application",
+          "already_account_text": "Vous avez déjà un compte ?",
+          "sign_in_link": "Connectez-vous ici"
+        }
       },
       "form": {
         "username_label": "Adresse mail",
         "username_placeholder": "xxxx@gmail.com",
         "password_label": "Mot de passe",
         "password_placeholder": "12345678",
+        "password_confirmation_label": "Confirmer le mot de passe",
+        "password_confirmation_placeholder": "12345678",
+        "first_name_label": "Prénom",
+        "first_name_placeholder": "Entrez votre prénom",
+        "last_name_label": "Nom",
+        "last_name_placeholder": "Entrez votre nom",
         "sign_in_button_text": "Se connecter",
+        "sign_up_button_text": "S'inscrire",
         "other_method_text": "Ou continuer avec",
         "providers": {
           "google": "Google"

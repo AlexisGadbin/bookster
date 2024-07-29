@@ -1,5 +1,6 @@
 import { UserModel } from '@/models/user'
 import { SignInType } from '@/validation/sign-in.schema'
+import { SignUpType } from '@/validation/sign-up.schema'
 import { instance } from '../axios'
 
 export const getAuthenticatedUser = async (): Promise<
@@ -14,4 +15,8 @@ export const login = async (signInRequest: SignInType): Promise<void> => {
 
 export const logout = async (): Promise<void> => {
   await instance.delete('/auth/logout')
+}
+
+export const register = async (signUpRequest: SignUpType): Promise<void> => {
+  await instance.post('/auth/register', signUpRequest)
 }
