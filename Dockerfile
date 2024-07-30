@@ -17,7 +17,7 @@ COPY . .
 
 # Créer un fichier .env
 # Ajouter la variable VITE_API_URL
-RUN echo "VITE_API_URL=https://alaikssi.com/api" > .env
+RUN echo "VITE_API_URL=https://bookster.alaikssi.com/api" > .env
 
 # Construire l'application
 RUN npm run build
