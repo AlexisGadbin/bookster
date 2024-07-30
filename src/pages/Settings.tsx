@@ -1,6 +1,5 @@
 import SwitchLanguage from '@/components/settings/switch-language'
 import { ThemeToggle } from '@/components/settings/theme-toggle'
-import { colors } from '@/utils/constants'
 import { useAuthenticatedUser } from '@/utils/hooks/authenticated-user'
 import { useTranslation } from 'react-i18next'
 
@@ -14,7 +13,7 @@ export default function Settings() {
     <main className="flex min-h-screen flex-col gap-10 px-12 py-8">
       <div className="flex flex-col items-center justify-center">
         <img
-          src={`https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&size=256&background=${user.avatarBackgroundColor || colors.blue}&color=fff`}
+          src={`https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&size=256&background=${user.avatarBackgroundColor}&color=fff`}
           alt="avatar"
           className="h-20 w-20 rounded-full"
         />

@@ -4,5 +4,5 @@ export type UserModel = {
   lastName: string
   email: string
   avatarUrl?: string
-  avatarBackgroundColor?: string
+  avatarBackgroundColor: string
 }
