@@ -19,7 +19,7 @@ const BooksList = () => {
         <Link
           key={book.id}
           to={`/books/${book.id}`}
-          className="relative min-w-20 select-none"
+          className="relative min-w-20 max-w-20 select-none md:min-w-32 md:max-w-32 lg:min-w-36 lg:max-w-36 xl:min-w-44 xl:max-w-44"
         >
           <img
             src={`https://ui-avatars.com/api/?name=${book.contributor.firstName}+${book.contributor.lastName}&size=256&background=${book.contributor.avatarBackgroundColor}&color=fff`}
