@@ -91,6 +91,9 @@
       }
     },
     "settings": {
+      "profile": {
+        "avatar_background_color": "Avatar background color"
+      },
       "preferences": {
         "title": "Preferences",
         "language": "Display language: ",

@@ -1,7 +1,7 @@
 import { logout } from '@/api/services/auth.service'
-import { getUserInitials } from '@/utils/functions'
 import { useAuthenticatedUser } from '@/utils/hooks/authenticated-user'
 import { useMutation } from '@tanstack/react-query'
+import { Loader } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { Link } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -43,8 +43,13 @@ const NavUserProfile = () => {
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="relative h-8 w-8 rounded-full">
           <Avatar className="h-8 w-8">
-            <AvatarImage src="/avatars/01.png" alt="@shadcn" />
-            <AvatarFallback>{getUserInitials(user)}</AvatarFallback>
+            <AvatarImage
+              src={`https://ui-avatars.com/api/?name=${user.firstName}+${user.lastName}&size=256&background=${user.avatarBackgroundColor}&color=fff`}
+              alt="@shadcn"
+            />
+            <AvatarFallback>
+              <Loader className="animate-spin" size={14} />
+            </AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
