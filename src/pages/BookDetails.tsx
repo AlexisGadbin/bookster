@@ -66,7 +66,7 @@ const BookDetails = () => {
           )}
         </div>
         <div>
-          <p>{book.description}</p>
+          <p className="text-sm">{book.description}</p>
         </div>
       </div>
     </section>
