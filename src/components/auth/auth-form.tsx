@@ -1,7 +1,7 @@
 import { login } from '@/api/services/auth.service'
 import { SignInSchema, SignInType } from '@/validation/sign-in.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { useMutation } from '@tanstack/react-query'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -20,7 +20,6 @@ import { Input } from '../ui/input'
 const AuthForm = () => {
   const { t } = useTranslation()
   const [isLoading, setIsLoading] = useState(false)
-  const queryClient = useQueryClient()
 
   const form = useForm<SignInType>({
     resolver: zodResolver(SignInSchema),
@@ -36,9 +35,7 @@ const AuthForm = () => {
     },
     onSuccess: () => {
       setIsLoading(false)
-      queryClient.invalidateQueries({
-        queryKey: ['current-user'],
-      })
+      window.location.reload()
     },
   })
 
