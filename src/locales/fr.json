@@ -14,7 +14,7 @@
       }
     },
     "home": {
-      "books_list_title": "Livres les plus récents",
+      "books_list_title": "Les derniers ajouts",
       "add_book_button": "Ajouter un livre"
     },
     "add_book": {
