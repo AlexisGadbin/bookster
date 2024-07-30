@@ -52,7 +52,7 @@ const BookDetails = () => {
       </div>
       <div className="absolute bottom-0 h-2/5 w-full rounded-tl-3xl rounded-tr-3xl bg-background p-4">
         <div className="flex items-center justify-between">
-          <h1>{book.title}</h1>
+          <h4>{book.title}</h4>
           {user?.id === book.contributor.id && (
             <div>
               <Button
