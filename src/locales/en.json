@@ -33,8 +33,10 @@
         "description_placeholder": "Enter the book description",
         "submit_button": "Add",
         "cancel_button": "Cancel",
-        "success_message": "The book has been successfully added",
-        "error_message": "An error occurred while adding the book"
+        "create_success_message": "The book has been successfully added",
+        "update_success_message": "The book has been successfully updated",
+        "create_error_message": "An error occurred while adding the book",
+        "update_error_message": "An error occurred while updating the book"
       },
       "errors": {
         "title_required": "The title is required",

@@ -1,6 +1,7 @@
 'use client'
 
 import { deleteBook, getBookById } from '@/api/services/book.service'
+import AddBookButton from '@/components/books/add-books-button'
 import { Button } from '@/components/ui/button'
 import { useAuthenticatedUser } from '@/utils/hooks/authenticated-user'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
@@ -72,7 +73,9 @@ const BookDetails = () => {
               variant={'ghost'}
               className="h-14 w-14 rounded-full border border-border md:h-16 md:w-16"
             >
-              <Edit2 />
+              <AddBookButton existingBook={book}>
+                <Edit2 />
+              </AddBookButton>
             </Button>
           </div>
         )}

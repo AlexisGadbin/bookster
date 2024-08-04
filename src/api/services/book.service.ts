@@ -14,6 +14,13 @@ export const createBook = async (formData: FormData): Promise<void> => {
   await instance.post('/books', formData)
 }
 
+export const updateBook = async (
+  id: number,
+  formData: FormData
+): Promise<void> => {
+  await instance.put(`/books/${id}`, formData)
+}
+
 export const deleteBook = async (id: number): Promise<void> => {
   await instance.delete(`/books/${id}`)
 }

@@ -1,4 +1,5 @@
-import { createBook } from '@/api/services/book.service'
+import { createBook, updateBook } from '@/api/services/book.service'
+import { BookModel } from '@/models/book'
 import { EditBookType, bookSchema } from '@/validation/book.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
@@ -19,8 +20,14 @@ import { Input } from '../ui/input'
 import { SheetClose } from '../ui/sheet'
 import { Textarea } from '../ui/textarea'
 
-const BookForm = () => {
-  const [coverImage, setCoverImage] = useState<File | null>(null)
+type BookFormProps = {
+  existingBook?: BookModel
+  closeSheet?: () => void
+}
+
+const BookForm = (props: BookFormProps) => {
+  const { existingBook, closeSheet } = props
+  const [coverImage, setCoverImage] = useState<File | null>()
   const [backCoverImage, setBackCoverImage] = useState<File | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const { t } = useTranslation()
@@ -29,10 +36,11 @@ const BookForm = () => {
   const form = useForm<EditBookType>({
     resolver: zodResolver(bookSchema),
     defaultValues: {
-      title: '',
-      description: '',
-      authorName: '',
+      title: existingBook?.title || '',
+      description: existingBook?.description || '',
+      authorName: existingBook?.author.name || '',
       coverImage: undefined,
+      backCoverImage: undefined,
     },
   })
 
@@ -40,15 +48,37 @@ const BookForm = () => {
     mutationFn: createBook,
     onSuccess: () => {
       form.reset()
-      setMessage(t('add_book.form.success_message'))
-      setTimeout(() => {
-        setMessage(null)
-      }, 3000)
       setCoverImage(null)
       setBackCoverImage(null)
       queryClient.invalidateQueries({
         queryKey: ['books'],
       })
+      closeSheet && closeSheet()
+    },
+    onError: (e) => {
+      console.log(e)
+      setMessage(t('add_book.form.error_message'))
+      setTimeout(() => {
+        setMessage(null)
+      }, 3000)
+    },
+  })
+
+  const updateBookMutation = useMutation<
+    void,
+    AxiosError,
+    {
+      id: number
+      formData: FormData
+    }
+  >({
+    mutationFn: ({ id, formData }) => updateBook(id, formData),
+    onSuccess: () => {
+      form.reset()
+      queryClient.invalidateQueries({
+        queryKey: ['book', String(existingBook?.id)],
+      })
+      closeSheet && closeSheet()
     },
     onError: (e) => {
       console.log(e)
@@ -64,14 +94,18 @@ const BookForm = () => {
     formData.append('title', data.title)
     formData.append('description', data.description)
     formData.append('authorName', data.authorName)
-    if (data.coverImage) {
+    if (data.coverImage && data.coverImage[0]) {
       formData.append('coverImage', data.coverImage[0])
     }
-    if (data.backCoverImage) {
+    if (data.backCoverImage && data.backCoverImage[0]) {
       formData.append('backCoverImage', data.backCoverImage[0])
     }
 
-    addBookMutation.mutate(formData)
+    if (existingBook) {
+      updateBookMutation.mutate({ id: existingBook.id, formData })
+    } else {
+      addBookMutation.mutate(formData)
+    }
   }
 
   const coverImageRef = form.register('coverImage')
@@ -104,7 +138,7 @@ const BookForm = () => {
             render={() => (
               <FormItem>
                 <FormControl>
-                  <div className="relative flex h-24 w-24 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-dashed border-gray-300">
+                  <div className="relative flex h-36 w-24 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-dashed border-gray-300">
                     <Input
                       {...coverImageRef}
                       onChange={(e) => {
@@ -119,8 +153,14 @@ const BookForm = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       {coverImage ? (
                         <img
-                          className="h-24 w-24 rounded-lg object-cover"
+                          className="h-36 w-24 rounded-lg object-cover"
                           src={URL.createObjectURL(coverImage)}
+                          alt={t('add_book.form.cover_label')}
+                        />
+                      ) : existingBook?.coverImageUrl ? (
+                        <img
+                          className="h-36 w-24 rounded-lg object-cover"
+                          src={existingBook.coverImageUrl}
                           alt={t('add_book.form.cover_label')}
                         />
                       ) : (
@@ -142,7 +182,7 @@ const BookForm = () => {
             render={() => (
               <FormItem>
                 <FormControl>
-                  <div className="relative flex h-24 w-24 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-dashed border-gray-300">
+                  <div className="relative flex h-36 w-24 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-dashed border-gray-300">
                     <Input
                       {...backCoverImageRef}
                       onChange={(e) => {
@@ -157,8 +197,14 @@ const BookForm = () => {
                     <div className="absolute inset-0 flex items-center justify-center">
                       {backCoverImage ? (
                         <img
-                          className="h-24 w-24 rounded-lg object-cover"
+                          className="h-36 w-24 rounded-lg object-cover"
                           src={URL.createObjectURL(backCoverImage)}
+                          alt={t('add_book.form.back_cover_label')}
+                        />
+                      ) : existingBook?.backCoverImageUrl ? (
+                        <img
+                          className="h-36 w-24 rounded-lg object-cover"
+                          src={existingBook.backCoverImageUrl}
                           alt={t('add_book.form.back_cover_label')}
                         />
                       ) : (
