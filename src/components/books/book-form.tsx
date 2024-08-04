@@ -21,6 +21,7 @@ import { Textarea } from '../ui/textarea'
 
 const BookForm = () => {
   const [coverImage, setCoverImage] = useState<File | null>(null)
+  const [backCoverImage, setBackCoverImage] = useState<File | null>(null)
   const [message, setMessage] = useState<string | null>(null)
   const { t } = useTranslation()
   const queryClient = useQueryClient()
@@ -43,6 +44,8 @@ const BookForm = () => {
       setTimeout(() => {
         setMessage(null)
       }, 3000)
+      setCoverImage(null)
+      setBackCoverImage(null)
       queryClient.invalidateQueries({
         queryKey: ['books'],
       })
@@ -64,11 +67,15 @@ const BookForm = () => {
     if (data.coverImage) {
       formData.append('coverImage', data.coverImage[0])
     }
+    if (data.backCoverImage) {
+      formData.append('backCoverImage', data.backCoverImage[0])
+    }
 
     addBookMutation.mutate(formData)
   }
 
-  const fileRef = form.register('coverImage')
+  const coverImageRef = form.register('coverImage')
+  const backCoverImageRef = form.register('backCoverImage')
 
   return (
     <Form {...form}>
@@ -96,31 +103,76 @@ const BookForm = () => {
             name="coverImage"
             render={() => (
               <FormItem>
-                <FormLabel>{t('add_book.form.cover_label')}</FormLabel>
                 <FormControl>
-                  <Input
-                    {...fileRef}
-                    onChange={(e) => {
-                      if (e.target.files) {
-                        setCoverImage(e.target.files[0])
-                      }
-                      fileRef.onChange(e)
-                    }}
-                    type="file"
-                    placeholder={t('add_book.form.cover_placeholder')}
-                  />
+                  <div className="relative flex h-24 w-24 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-dashed border-gray-300">
+                    <Input
+                      {...coverImageRef}
+                      onChange={(e) => {
+                        if (e.target.files) {
+                          setCoverImage(e.target.files[0])
+                        }
+                        coverImageRef.onChange(e)
+                      }}
+                      type="file"
+                      className="absolute inset-0 z-10 h-full w-full opacity-0"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {coverImage ? (
+                        <img
+                          className="h-24 w-24 rounded-lg object-cover"
+                          src={URL.createObjectURL(coverImage)}
+                          alt={t('add_book.form.cover_label')}
+                        />
+                      ) : (
+                        <p className="text-center text-sm text-gray-500">
+                          {t('add_book.form.cover_label')}
+                        </p>
+                      )}
+                    </div>
+                  </div>
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
-          {coverImage ? (
-            <img
-              className="h-24 w-24 rounded-lg object-cover"
-              src={URL.createObjectURL(coverImage)}
-              alt={t('add_book.form.cover_image')}
-            />
-          ) : null}
+
+          <FormField
+            control={form.control}
+            name="backCoverImage"
+            render={() => (
+              <FormItem>
+                <FormControl>
+                  <div className="relative flex h-24 w-24 cursor-pointer items-center justify-center overflow-hidden rounded-lg border border-dashed border-gray-300">
+                    <Input
+                      {...backCoverImageRef}
+                      onChange={(e) => {
+                        if (e.target.files) {
+                          setBackCoverImage(e.target.files[0])
+                        }
+                        backCoverImageRef.onChange(e)
+                      }}
+                      type="file"
+                      className="absolute inset-0 z-10 h-full w-full opacity-0"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      {backCoverImage ? (
+                        <img
+                          className="h-24 w-24 rounded-lg object-cover"
+                          src={URL.createObjectURL(backCoverImage)}
+                          alt={t('add_book.form.back_cover_label')}
+                        />
+                      ) : (
+                        <p className="text-center text-sm text-gray-500">
+                          {t('add_book.form.back_cover_label')}
+                        </p>
+                      )}
+                    </div>
+                  </div>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
         </div>
 
         <FormField
