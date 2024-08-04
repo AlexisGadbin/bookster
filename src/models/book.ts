@@ -8,4 +8,5 @@ export type BookModel = {
   author: AuthorModel
   contributor: UserModel
   coverImageUrl?: string
+  backCoverImageUrl?: string
 }

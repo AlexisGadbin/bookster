@@ -4,7 +4,7 @@ import { deleteBook, getBookById } from '@/api/services/book.service'
 import { Button } from '@/components/ui/button'
 import { useAuthenticatedUser } from '@/utils/hooks/authenticated-user'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
-import { Trash2 } from 'lucide-react'
+import { Edit2, Trash2 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -43,31 +43,39 @@ const BookDetails = () => {
 
   return (
     <section className="relative h-full">
-      <div className="h-2/3 w-full bg-primary">
+      <div className="flex w-full items-center justify-center gap-8 py-8">
         <img
           src={book.coverImageUrl}
           alt={book.title}
-          className="h-full w-full object-cover"
+          className="h-36 w-24 rounded-lg object-cover"
+        />
+        <img
+          src={book.backCoverImageUrl}
+          alt={book.title}
+          className="h-36 w-24 rounded-lg object-cover"
         />
       </div>
-      <div className="absolute bottom-0 h-2/5 w-full rounded-tl-3xl rounded-tr-3xl bg-background p-4">
-        <div className="flex items-center justify-between">
-          <h4>{book.title}</h4>
-          {user?.id === book.contributor.id && (
-            <div>
-              <Button
-                variant={'ghost'}
-                className="h-14 w-14 rounded-full border border-border md:h-16 md:w-16"
-                onClick={handleDeleteBook}
-              >
-                <Trash2 />
-              </Button>
-            </div>
-          )}
-        </div>
-        <div>
-          <p className="text-sm">{book.description}</p>
-        </div>
+      <div className="flex flex-col px-4">
+        <h1 className="text-2xl font-bold">{book.title}</h1>
+        <span className="text-sm">{book.author.name}</span>
+        <p className="text-sm">{book.description}</p>
+        {user?.id === book.contributor.id && (
+          <div className="mt-4 flex justify-center gap-4">
+            <Button
+              variant={'ghost'}
+              className="h-14 w-14 rounded-full border border-border md:h-16 md:w-16"
+              onClick={handleDeleteBook}
+            >
+              <Trash2 />
+            </Button>
+            <Button
+              variant={'ghost'}
+              className="h-14 w-14 rounded-full border border-border md:h-16 md:w-16"
+            >
+              <Edit2 />
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   )
