@@ -1,13 +1,19 @@
 import { cn } from '@/lib/utils'
 import { useTranslation } from 'react-i18next'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import AddBookButton from '../books/add-books-button'
 import { Button } from '../ui/button'
 import NavUserProfile from './nav-user-profile'
 
-type NavLink = { name: 'home'; href: string }
+type NavLink = { name: 'home' | 'wishlist'; href: string }
 
-const navLinks: NavLink[] = [{ name: 'home', href: '/' }]
+const navLinks: NavLink[] = [
+  { name: 'home', href: '/' },
+  {
+    name: 'wishlist',
+    href: '/wishlist',
+  },
+]
 
 const Navbar = () => {
   const { t } = useTranslation()
@@ -16,13 +22,18 @@ const Navbar = () => {
     <div className="sticky top-0 z-10 flex h-nav items-center bg-background px-4">
       <nav className={cn('mx-6 flex items-center space-x-4 lg:space-x-6')}>
         {navLinks.map((link) => (
-          <Link
+          <NavLink
             key={link.name}
             to={link.href}
-            className="text-sm font-medium transition-colors hover:text-primary"
+            className={({ isActive }) =>
+              cn(
+                'text-sm font-medium transition-colors hover:text-primary',
+                isActive ? 'text-primary' : 'hover:text-primary'
+              )
+            }
           >
             {t('nav.links.' + link.name)}
-          </Link>
+          </NavLink>
         ))}
       </nav>
       <div className="ml-auto flex items-center space-x-4">

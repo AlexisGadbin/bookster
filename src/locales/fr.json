@@ -2,7 +2,8 @@
   "translation": {
     "nav": {
       "links": {
-        "home": "Accueil"
+        "home": "Accueil",
+        "wishlist": "Liste de souhaits"
       },
       "search": {
         "placeholder": "Rechercher..."
@@ -16,6 +17,10 @@
     "home": {
       "books_list_title": "Les derniers ajouts",
       "add_book_button": "Ajouter un livre"
+    },
+    "wishlist": {
+      "title": "Ma liste de souhaits",
+      "empty": "Votre liste de souhaits est vide"
     },
     "add_book": {
       "title": "Ajouter un livre",

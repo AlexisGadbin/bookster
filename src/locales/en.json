@@ -2,7 +2,8 @@
   "translation": {
     "nav": {
       "links": {
-        "home": "Home"
+        "home": "Home",
+        "wishlist": "Wishlist"
       },
       "search": {
         "placeholder": "Search..."
@@ -16,6 +17,10 @@
     "home": {
       "books_list_title": "The latest additions",
       "add_book_button": "Add a book"
+    },
+    "wishlist": {
+      "title": "My wishlist",
+      "empty": "Your wishlist is empty"
     },
     "add_book": {
       "title": "Add a book",
