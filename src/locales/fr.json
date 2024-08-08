@@ -31,6 +31,7 @@
         "create_author_button": "Créer un auteur",
         "description_label": "Description",
         "description_placeholder": "Entrez la description du livre",
+        "is_wishlisted_label": "Ajouter à ma liste de souhaits ?",
         "submit_button": "Ajouter",
         "cancel_button": "Annuler",
         "create_success_message": "Le livre a été ajouté avec succès",

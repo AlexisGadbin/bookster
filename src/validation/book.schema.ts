@@ -21,6 +21,7 @@ export const bookSchema = z.object({
     }, 'add_book.errors.cover_image_max_size'),
   description: z.string().min(1, 'add_book.errors.description_required'),
   authorName: z.string().min(1, 'add_book.errors.author_name_required'),
+  isWishlisted: z.boolean(),
 })
 
 export type EditBookType = z.infer<typeof bookSchema>

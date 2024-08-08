@@ -8,6 +8,7 @@ import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { Button } from '../ui/button'
+import { Checkbox } from '../ui/checkbox'
 import {
   Form,
   FormControl,
@@ -41,6 +42,7 @@ const BookForm = (props: BookFormProps) => {
       authorName: existingBook?.author.name || '',
       coverImage: undefined,
       backCoverImage: undefined,
+      isWishlisted: existingBook?.isWishlisted || false,
     },
   })
 
@@ -94,6 +96,7 @@ const BookForm = (props: BookFormProps) => {
     formData.append('title', data.title)
     formData.append('description', data.description)
     formData.append('authorName', data.authorName)
+    formData.append('isWishlisted', String(data.isWishlisted))
     if (data.coverImage && data.coverImage[0]) {
       formData.append('coverImage', data.coverImage[0])
     }
@@ -249,6 +252,24 @@ const BookForm = (props: BookFormProps) => {
                   placeholder={t('add_book.form.author_placeholder')}
                 />
               </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="isWishlisted"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-2">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel className="!m-0">
+                {t('add_book.form.is_wishlisted_label')}
+              </FormLabel>
               <FormMessage />
             </FormItem>
           )}

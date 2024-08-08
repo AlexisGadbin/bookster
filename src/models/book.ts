@@ -9,4 +9,5 @@ export type BookModel = {
   contributor: UserModel
   coverImageUrl?: string
   backCoverImageUrl?: string
+  isWishlisted: boolean
 }
