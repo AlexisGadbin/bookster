@@ -23,11 +23,10 @@ import { Textarea } from '../ui/textarea'
 
 type BookFormProps = {
   existingBook?: BookModel
-  closeSheet?: () => void
 }
 
 const BookForm = (props: BookFormProps) => {
-  const { existingBook, closeSheet } = props
+  const { existingBook } = props
   const [coverImage, setCoverImage] = useState<File | null>()
   const [backCoverImage, setBackCoverImage] = useState<File | null>(null)
   const [message, setMessage] = useState<string | null>(null)
@@ -55,7 +54,6 @@ const BookForm = (props: BookFormProps) => {
       queryClient.invalidateQueries({
         queryKey: ['books'],
       })
-      closeSheet && closeSheet()
     },
     onError: (e) => {
       console.log(e)
@@ -80,7 +78,6 @@ const BookForm = (props: BookFormProps) => {
       queryClient.invalidateQueries({
         queryKey: ['book', String(existingBook?.id)],
       })
-      closeSheet && closeSheet()
     },
     onError: (e) => {
       console.log(e)
