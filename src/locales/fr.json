@@ -37,6 +37,8 @@
         "description_label": "Description",
         "description_placeholder": "Entrez la description du livre",
         "is_wishlisted_label": "Ajouter à ma liste de souhaits ?",
+        "note_label": "Note",
+        "note_description": "Qu'avez vous pensé de ce livre ?",
         "submit_button": "Ajouter",
         "cancel_button": "Annuler",
         "create_success_message": "Le livre a été ajouté avec succès",

@@ -4,6 +4,7 @@ import { EditBookType, bookSchema } from '@/validation/book.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import type { AxiosError } from 'axios'
+import { Star } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
@@ -12,6 +13,7 @@ import { Checkbox } from '../ui/checkbox'
 import {
   Form,
   FormControl,
+  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,6 +21,7 @@ import {
 } from '../ui/form'
 import { Input } from '../ui/input'
 import { SheetClose } from '../ui/sheet'
+import { Slider } from '../ui/slider'
 import { Textarea } from '../ui/textarea'
 
 type BookFormProps = {
@@ -42,6 +45,7 @@ const BookForm = (props: BookFormProps) => {
       coverImage: undefined,
       backCoverImage: undefined,
       isWishlisted: existingBook?.isWishlisted || false,
+      note: 4,
     },
   })
 
@@ -94,6 +98,7 @@ const BookForm = (props: BookFormProps) => {
     formData.append('description', data.description)
     formData.append('authorName', data.authorName)
     formData.append('isWishlisted', String(data.isWishlisted))
+    formData.append('note', String(data.note))
     if (data.coverImage && data.coverImage[0]) {
       formData.append('coverImage', data.coverImage[0])
     }
@@ -271,6 +276,34 @@ const BookForm = (props: BookFormProps) => {
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="note"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t('add_book.form.note_label')}</FormLabel>
+              <FormControl>
+                <Slider
+                  min={0}
+                  max={10}
+                  step={0.5}
+                  defaultValue={[field.value]}
+                  onValueChange={field.onChange}
+                />
+              </FormControl>
+              <FormDescription className="flex justify-between">
+                <span>{t('add_book.form.note_description')}</span>
+                <span className="flex items-center gap-1">
+                  {field.value}
+                  <Star size={16} />
+                </span>
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <div className="flex w-full flex-col gap-4">
           <p>{message ? <p>{message}</p> : null}</p>
           <Button type="submit">{t('add_book.form.submit_button')}</Button>
