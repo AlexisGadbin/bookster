@@ -289,7 +289,9 @@ const BookForm = (props: BookFormProps) => {
                   max={10}
                   step={0.5}
                   defaultValue={[field.value]}
-                  onValueChange={field.onChange}
+                  onValueChange={(vals) => {
+                    field.onChange(vals[0])
+                  }}
                 />
               </FormControl>
               <FormDescription className="flex justify-between">
