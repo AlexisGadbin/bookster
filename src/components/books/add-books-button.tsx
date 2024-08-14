@@ -22,11 +22,11 @@ const AddBookButton = (props: AddBookButtonProps) => {
     <Sheet>
       <SheetTrigger asChild>{children}</SheetTrigger>
       <SheetContent>
-        <div className="mx-auto w-full max-w-sm">
+        <div className="mx-auto h-full w-full max-w-sm py-8">
           <SheetHeader>
             <SheetTitle>{t('add_book.title')}</SheetTitle>
           </SheetHeader>
-          <div className="p-4 pb-0">
+          <div className="h-full overflow-y-scroll p-4 pb-0">
             <BookForm existingBook={existingBook} />
           </div>
         </div>
