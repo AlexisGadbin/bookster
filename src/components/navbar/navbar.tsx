@@ -23,12 +23,7 @@ const Navbar = () => {
       <nav className={cn('mx-6 flex items-center space-x-4 lg:space-x-6')}>
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            cn(
-              'text-sm font-medium transition-colors hover:text-primary',
-              isActive ? 'text-primary' : 'hover:text-primary'
-            )
-          }
+          className={cn('text-sm font-medium text-primary transition-colors')}
           title="Bookster"
         >
           <Library size={24} />
