@@ -10,12 +10,12 @@
       },
       "user-profile": {
         "profile": "Profil",
-        "settings": "Paramètres",
         "logout": "Déconnexion"
       }
     },
     "home": {
       "books_list_title": "Les derniers ajouts",
+      "search_result_title": "Voici ce que nous avons trouvé pour \"{{query}}\"",
       "add_book_button": "Ajouter un livre"
     },
     "wishlist": {

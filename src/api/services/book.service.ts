@@ -6,6 +6,12 @@ export const getBooks = async (): Promise<PaginatedResponse<BookModel>> => {
   return (await instance.get('/books')).data
 }
 
+export const searchBooks = async (
+  search: string
+): Promise<PaginatedResponse<BookModel>> => {
+  return (await instance.get(`/books?search=${search}`)).data
+}
+
 export const getWishlistedBooks = async (): Promise<
   PaginatedResponse<BookModel>
 > => {

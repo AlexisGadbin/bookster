@@ -10,12 +10,12 @@
       },
       "user-profile": {
         "profile": "Profile",
-        "settings": "Settings",
         "logout": "Logout"
       }
     },
     "home": {
       "books_list_title": "The latest additions",
+      "search_result_title": "Here is what we found for \"{{query}}\"",
       "add_book_button": "Add a book"
     },
     "wishlist": {
@@ -37,6 +37,8 @@
         "description_label": "Description",
         "description_placeholder": "Enter the book description",
         "is_wishlisted_label": "Add to my wishlist?",
+        "note_label": "Note",
+        "note_description": "What did you think of this book?",
         "submit_button": "Add",
         "cancel_button": "Cancel",
         "create_success_message": "The book has been successfully added",
