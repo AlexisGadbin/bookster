@@ -1,6 +1,7 @@
 import { SearchSchema, SearchType } from '@/validation/search.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Search } from 'lucide-react'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -11,7 +12,7 @@ const NavSearch = () => {
   const [searchParams] = useSearchParams()
   const navigate = useNavigate()
 
-  const { register, handleSubmit, watch } = useForm<SearchType>({
+  const { register, handleSubmit, watch, setValue } = useForm<SearchType>({
     resolver: zodResolver(SearchSchema),
     defaultValues: {
       search: searchParams.get('search') || '',
@@ -21,6 +22,10 @@ const NavSearch = () => {
   const onSubmit = (data: SearchType) => {
     navigate('/?search=' + data.search)
   }
+
+  useEffect(() => {
+    setValue('search', searchParams.get('search') || '')
+  }, [searchParams, setValue])
 
   const watchedForm = watch()
 
