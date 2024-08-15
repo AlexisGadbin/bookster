@@ -10,6 +10,7 @@
       },
       "user-profile": {
         "profile": "Profile",
+        "wishlist": "My wishlist",
         "logout": "Logout"
       }
     },

@@ -10,6 +10,7 @@
       },
       "user-profile": {
         "profile": "Profil",
+        "wishlist": "Mes envies",
         "logout": "Déconnexion"
       }
     },
