@@ -1,4 +1,5 @@
 import { login } from '@/api/services/auth.service'
+import { API_URL } from '@/utils/constants'
 import { SignInSchema, SignInType } from '@/validation/sign-in.schema'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useMutation } from '@tanstack/react-query'
@@ -16,6 +17,7 @@ import {
   FormMessage,
 } from '../ui/form'
 import { Input } from '../ui/input'
+import GoogleButton from './google-button'
 
 const AuthForm = () => {
   const { t } = useTranslation()
@@ -41,6 +43,11 @@ const AuthForm = () => {
 
   const onSubmit = (values: SignInType) => {
     loginMutation.mutate(values)
+  }
+
+  const handleGoogleLogin = () => {
+    setIsLoading(true)
+    window.location.href = API_URL + '/socials/google'
   }
 
   return (
@@ -104,14 +111,9 @@ const AuthForm = () => {
           </span>
         </div>
       </div>
-      <Button variant="outline" type="button" disabled={isLoading}>
-        {isLoading ? (
-          <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
-        ) : (
-          <Icons.google className="mr-2 h-4 w-4" />
-        )}{' '}
+      <GoogleButton isLoading={isLoading} handleGoogleLogin={handleGoogleLogin}>
         {t('auth.form.providers.google')}
-      </Button>
+      </GoogleButton>
     </div>
   )
 }

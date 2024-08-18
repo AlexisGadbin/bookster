@@ -110,6 +110,12 @@
         "title": "Préférences",
         "language": "Langue d'affichage : ",
         "theme": "Thème de l'application : "
+      },
+      "account": {
+        "title": "Compte",
+        "google_sync": "Synchronisation avec Google : ",
+        "google_not_synced": "Non synchronisé",
+        "google_synced": "Synchronisé"
       }
     }
   }

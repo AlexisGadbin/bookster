@@ -110,6 +110,12 @@
         "title": "Preferences",
         "language": "Display language: ",
         "theme": "Application theme: "
+      },
+      "account": {
+        "title": "Account",
+        "google_sync": "Google sync: ",
+        "google_not_synced": "Not synced",
+        "google_synced": "Synced"
       }
     }
   }
