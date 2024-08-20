@@ -84,7 +84,7 @@ export default function Settings() {
             handleGoogleLogin={handleGoogleLogin}
             className={
               user.googleId
-                ? 'bg-green-500 text-white'
+                ? 'pointer-events-none bg-green-500 text-white'
                 : 'bg-red-500 text-white'
             }
           >
