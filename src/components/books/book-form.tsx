@@ -38,14 +38,14 @@ const BookForm = (props: BookFormProps) => {
 
   const form = useForm<EditBookType>({
     resolver: zodResolver(bookSchema),
-    defaultValues: {
+    values: {
       title: existingBook?.title || '',
       description: existingBook?.description || '',
       authorName: existingBook?.author.name || '',
       coverImage: undefined,
       backCoverImage: undefined,
       isWishlisted: existingBook?.isWishlisted || false,
-      note: 4,
+      note: Number(existingBook?.note) || 4,
     },
   })
 
@@ -80,7 +80,7 @@ const BookForm = (props: BookFormProps) => {
     onSuccess: () => {
       form.reset()
       queryClient.invalidateQueries({
-        queryKey: ['book', String(existingBook?.id)],
+        queryKey: ['book', existingBook?.id],
       })
     },
     onError: (e) => {

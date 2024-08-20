@@ -18,7 +18,7 @@ const BookDetails = () => {
   const { user } = useAuthenticatedUser()
 
   const { data: book, isLoading } = useQuery({
-    queryKey: ['book', id],
+    queryKey: ['book', Number(id)],
     queryFn: () => getBookById(Number(id)),
   })
 
