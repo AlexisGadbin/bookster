@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom'
 import BookDetails from './pages/BookDetails'
+import ExplorePage from './pages/Explore'
 import Home from './pages/Home'
 import Profile from './pages/Profile'
 import Wishlist from './pages/Wishlist'
@@ -11,6 +12,7 @@ export const Router = () => {
       <Route path="/wishlist" element={<Wishlist />} />
       <Route path="/books/:id" element={<BookDetails />} />
       <Route path="/profile" element={<Profile />} />
+      <Route path="/explore" element={<ExplorePage />} />
     </Routes>
   )
 }
