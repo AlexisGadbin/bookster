@@ -3,7 +3,8 @@
     "nav": {
       "links": {
         "home": "Accueil",
-        "wishlist": "Liste de souhaits"
+        "wishlist": "Mes envies",
+        "explore": "Explorer"
       },
       "search": {
         "placeholder": "Rechercher..."
@@ -15,7 +16,8 @@
       }
     },
     "home": {
-      "books_list_title": "Les derniers ajouts",
+      "my_books_title": "Mes derniers livres",
+      "my_wishlist_title": "Ma liste de souhaits",
       "search_result_title": "Voici ce que nous avons trouvé pour \"{{query}}\"",
       "add_book_button": "Ajouter un livre"
     },
@@ -116,6 +118,11 @@
         "google_sync": "Synchronisation avec Google : ",
         "google_not_synced": "Non synchronisé",
         "google_synced": "Synchronisé"
+      }
+    },
+    "components": {
+      "book_list": {
+        "show_more": "Tout voir..."
       }
     }
   }

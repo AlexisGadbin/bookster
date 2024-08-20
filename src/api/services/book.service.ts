@@ -12,10 +12,18 @@ export const searchBooks = async (
   return (await instance.get(`/books?search=${search}`)).data
 }
 
-export const getWishlistedBooks = async (): Promise<
-  PaginatedResponse<BookModel>
-> => {
-  return (await instance.get('/wishlist')).data
+export const getWishlistedBooks = async (
+  page?: number,
+  limit?: number
+): Promise<PaginatedResponse<BookModel>> => {
+  return (await instance.get('/wishlist?page=' + page + '&limit=' + limit)).data
+}
+
+export const getMyBooks = async (
+  page?: number,
+  limit?: number
+): Promise<PaginatedResponse<BookModel>> => {
+  return (await instance.get('me/books?page=' + page + '&limit=' + limit)).data
 }
 
 export const getBookById = async (id: number): Promise<BookModel> => {

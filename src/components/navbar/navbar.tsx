@@ -2,16 +2,19 @@ import { cn } from '@/lib/utils'
 import { Library } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { NavLink } from 'react-router-dom'
-import NavSearch from './nav-search'
 import NavUserProfile from './nav-user-profile'
 
-type NavLink = { name: 'home' | 'wishlist'; href: string }
+type NavLink = { name: 'home' | 'wishlist' | 'explore'; href: string }
 
 const navLinks: NavLink[] = [
   { name: 'home', href: '/' },
   {
     name: 'wishlist',
     href: '/wishlist',
+  },
+  {
+    name: 'explore',
+    href: '/explore',
   },
 ]
 
@@ -34,7 +37,7 @@ const Navbar = () => {
             to={link.href}
             className={({ isActive }) =>
               cn(
-                'hidden text-sm font-medium transition-colors hover:text-primary sm:block',
+                'text-sm font-medium transition-colors hover:text-primary sm:block',
                 isActive ? 'text-primary' : 'hover:text-primary'
               )
             }
@@ -44,7 +47,7 @@ const Navbar = () => {
         ))}
       </nav>
       <div className="ml-auto flex items-center space-x-4">
-        <NavSearch />
+        {/* <NavSearch /> */}
         <NavUserProfile />
       </div>
     </div>

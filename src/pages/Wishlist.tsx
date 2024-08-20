@@ -7,7 +7,7 @@ const Wishlist = () => {
   const { t } = useTranslation()
   const { data: wishlist } = useQuery({
     queryKey: ['wishlist'],
-    queryFn: getWishlistedBooks,
+    queryFn: () => getWishlistedBooks(),
   })
 
   return (

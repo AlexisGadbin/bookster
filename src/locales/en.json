@@ -3,7 +3,8 @@
     "nav": {
       "links": {
         "home": "Home",
-        "wishlist": "Wishlist"
+        "wishlist": "Wishlist",
+        "explore": "Explore"
       },
       "search": {
         "placeholder": "Search..."
@@ -15,7 +16,8 @@
       }
     },
     "home": {
-      "books_list_title": "The latest additions",
+      "my_books_title": "My latest books",
+      "my_wishlist_title": "My wishlist",
       "search_result_title": "Here is what we found for \"{{query}}\"",
       "add_book_button": "Add a book"
     },
@@ -116,6 +118,11 @@
         "google_sync": "Google sync: ",
         "google_not_synced": "Not synced",
         "google_synced": "Synced"
+      }
+    },
+    "components": {
+      "book_list": {
+        "show_more": "Show all..."
       }
     }
   }
