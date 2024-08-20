@@ -1,4 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { I18nextProvider } from 'react-i18next'
@@ -20,6 +21,7 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
             <BaseLayout>
               <Router />
             </BaseLayout>
+            <ReactQueryDevtools initialIsOpen={false} position="left" />
           </QueryClientProvider>
         </ThemeProvider>
       </I18nextProvider>
