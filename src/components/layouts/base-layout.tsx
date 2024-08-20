@@ -1,4 +1,5 @@
 import { PropsWithChildren } from 'react'
+import NotResponsiveDialog from '../dialog/not-responsive-dialog'
 import Navbar from '../navbar/navbar'
 
 const BaseLayout = ({ children }: PropsWithChildren) => {
@@ -6,6 +7,7 @@ const BaseLayout = ({ children }: PropsWithChildren) => {
     <>
       <Navbar />
       {children}
+      <NotResponsiveDialog />
     </>
   )
 }

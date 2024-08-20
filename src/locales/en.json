@@ -124,6 +124,11 @@
       "book_list": {
         "show_more": "Show all..."
       }
+    },
+    "common": {
+      "not_responsive_title": "Not designed for a computer screen!",
+      "not_responsive_description": "This application was designed to be used on a phone. \n Therefore, your experience may be altered on a computer screen. \nA web version is currently under development, thank you for your understanding ;)",
+      "understand": "I understand"
     }
   }
 }

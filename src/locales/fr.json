@@ -124,6 +124,11 @@
       "book_list": {
         "show_more": "Tout voir..."
       }
+    },
+    "common": {
+      "not_responsive_title": "Non pensé pour un écran d'ordinateur !",
+      "not_responsive_description": "Cette application à été conçue pour être utilisée sur un téléphone. \n Par conséquent, votre expérience peut être altérée sur un écran d'ordinateur. \nUne version web est en cours de développement, merci de votre compréhension ;)",
+      "understand": "Je comprends"
     }
   }
 }
