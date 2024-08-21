@@ -18,9 +18,7 @@ const BooksList = (props: BooksListProps) => {
         ))}
         {books.length === 0 && (
           <div className="w-full text-center">
-            <h4 className="text-2xl font-bold">
-              {t('components.book_list.empty')}
-            </h4>
+            <p>{t('components.book_list.empty')}</p>
           </div>
         )}
       </section>
