@@ -1,3 +1,4 @@
+import { useMediaQuery } from '@/utils/hooks/media-query'
 import { useTranslation } from 'react-i18next'
 import {
   AlertDialog,
@@ -12,9 +13,15 @@ import {
 const NotResponsiveDialog = () => {
   const { t } = useTranslation()
 
+  const isDesktop = useMediaQuery('(min-width: 768px)')
+
+  if (!isDesktop) {
+    return null
+  }
+
   return (
     <AlertDialog defaultOpen>
-      <AlertDialogContent className="hidden lg:block">
+      <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle className="whitespace-pre-line">
             {t('common.not_responsive_title')}
