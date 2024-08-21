@@ -122,7 +122,7 @@
     },
     "components": {
       "book_list": {
-        "show_more": "Tout voir..."
+        "empty": "Aucun livre trouvé pour le moment !"
       }
     },
     "common": {

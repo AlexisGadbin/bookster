@@ -72,13 +72,6 @@ const NavUserProfile = () => {
             </DropdownMenuItem>
           </Link>
         </DropdownMenuGroup>
-        <DropdownMenuGroup>
-          <Link to={`/wishlist`}>
-            <DropdownMenuItem className="cursor-pointer">
-              {t('nav.user-profile.wishlist')}
-            </DropdownMenuItem>
-          </Link>
-        </DropdownMenuGroup>
         <DropdownMenuSeparator />
         <button type="button" onClick={handleLogout} className="w-full">
           <DropdownMenuItem className="cursor-pointer">

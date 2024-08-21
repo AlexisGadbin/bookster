@@ -1,4 +1,5 @@
 import { BookModel } from '@/models/book'
+import { useTranslation } from 'react-i18next'
 import BookCard from './book-card'
 
 type BooksListProps = {
@@ -7,7 +8,7 @@ type BooksListProps = {
 
 const BooksList = (props: BooksListProps) => {
   const { books } = props
-  console.log(books)
+  const { t } = useTranslation()
 
   return (
     <>
@@ -15,6 +16,13 @@ const BooksList = (props: BooksListProps) => {
         {books.map((book) => (
           <BookCard key={book.id} book={book} showContributor={false} />
         ))}
+        {books.length === 0 && (
+          <div className="w-full text-center">
+            <h4 className="text-2xl font-bold">
+              {t('components.book_list.empty')}
+            </h4>
+          </div>
+        )}
       </section>
     </>
   )
