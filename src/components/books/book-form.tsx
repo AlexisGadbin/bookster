@@ -26,10 +26,11 @@ import { Textarea } from '../ui/textarea'
 
 type BookFormProps = {
   existingBook?: BookModel
+  setIsOpen: (isOpen: boolean) => void
 }
 
 const BookForm = (props: BookFormProps) => {
-  const { existingBook } = props
+  const { existingBook, setIsOpen } = props
   const [coverImage, setCoverImage] = useState<File | null>()
   const [backCoverImage, setBackCoverImage] = useState<File | null>(null)
   const [message, setMessage] = useState<string | null>(null)
@@ -82,6 +83,7 @@ const BookForm = (props: BookFormProps) => {
       queryClient.invalidateQueries({
         queryKey: ['book', existingBook?.id],
       })
+      setIsOpen(false)
     },
     onError: (e) => {
       console.log(e)
