@@ -57,7 +57,10 @@ const BookForm = (props: BookFormProps) => {
       setCoverImage(null)
       setBackCoverImage(null)
       queryClient.invalidateQueries({
-        queryKey: ['books'],
+        queryKey: ['myBooks'],
+      })
+      queryClient.invalidateQueries({
+        queryKey: ['wishlist'],
       })
       setIsOpen(false)
     },
