@@ -19,7 +19,7 @@ export const bookSchema = z.object({
       if (!file || file.length === 0) return true
       return file[0].size < 4 * 1024 * 1024
     }, 'add_book.errors.cover_image_max_size'),
-  description: z.string().min(1, 'add_book.errors.description_required'),
+  description: z.string(),
   authorName: z.string().min(1, 'add_book.errors.author_name_required'),
   isWishlisted: z.boolean(),
   note: z.number().min(0).max(10),
