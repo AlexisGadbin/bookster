@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { useAuthenticatedUser } from '@/utils/hooks/authenticated-user'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { Edit2, Trash2 } from 'lucide-react'
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'sonner'
@@ -16,6 +17,9 @@ const BookDetails = () => {
   const queryClient = useQueryClient()
   const { t } = useTranslation('book_details')
   const { user } = useAuthenticatedUser()
+  const [selectedImage, setSelectedImage] = useState<string | undefined>(
+    undefined
+  )
 
   const { data: book, isLoading } = useQuery({
     queryKey: ['book', Number(id)],
@@ -38,23 +42,37 @@ const BookDetails = () => {
     deleteBookMutation.mutate()
   }
 
+  const handleImageClick = (img: string | undefined) => {
+    setSelectedImage(img)
+  }
+
   if (isLoading) return <div>Loading...</div>
 
   if (!book) return <div>No book found</div>
 
   return (
-    <section className="relative h-full">
+    <section className="h-full">
       <div className="flex w-full items-center justify-center gap-8 py-8">
-        <img
-          src={book.coverImageUrl}
-          alt={book.title}
-          className="h-36 w-24 rounded-lg object-cover"
-        />
-        <img
-          src={book.backCoverImageUrl}
-          alt={book.title}
-          className="h-36 w-24 rounded-lg object-cover"
-        />
+        <button
+          type="button"
+          onClick={() => handleImageClick(book.coverImageUrl)}
+        >
+          <img
+            src={book.coverImageUrl}
+            alt={book.title}
+            className="h-36 w-24 rounded-lg object-cover"
+          />
+        </button>
+        <button
+          type="button"
+          onClick={() => handleImageClick(book.backCoverImageUrl)}
+        >
+          <img
+            src={book.backCoverImageUrl}
+            alt={book.title}
+            className="h-36 w-24 rounded-lg object-cover"
+          />
+        </button>
       </div>
       <div className="flex flex-col px-4">
         <h1 className="text-2xl font-bold">{book.title}</h1>
@@ -80,6 +98,16 @@ const BookDetails = () => {
           </div>
         )}
       </div>
+      {selectedImage && (
+        <button onClick={() => setSelectedImage(undefined)}>
+          <img
+            className="absolute bottom-0 top-0 z-[100] h-full w-full rounded-lg bg-cover object-contain p-8"
+            src={selectedImage}
+            alt="Image"
+          />
+          <div className="absolute inset-0 z-[99] rounded-lg bg-black bg-opacity-70" />
+        </button>
+      )}
     </section>
   )
 }
