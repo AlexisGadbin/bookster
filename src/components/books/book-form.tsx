@@ -59,6 +59,7 @@ const BookForm = (props: BookFormProps) => {
       queryClient.invalidateQueries({
         queryKey: ['books'],
       })
+      setIsOpen(false)
     },
     onError: (e) => {
       console.log(e)
