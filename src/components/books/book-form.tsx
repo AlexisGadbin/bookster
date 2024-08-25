@@ -310,7 +310,11 @@ const BookForm = (props: BookFormProps) => {
 
         <div className="flex w-full flex-col gap-4">
           <p>{message ? <p>{message}</p> : null}</p>
-          <Button type="submit">{t('add_book.form.submit_button')}</Button>
+          <Button type="submit">
+            {existingBook
+              ? t('add_book.form.update_button')
+              : t('add_book.form.submit_button')}
+          </Button>
           <SheetClose asChild>
             <Button variant="outline">
               {t('add_book.form.cancel_button')}

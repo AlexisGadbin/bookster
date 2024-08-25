@@ -43,6 +43,7 @@
         "note_label": "Note",
         "note_description": "Qu'avez vous pensé de ce livre ?",
         "submit_button": "Ajouter",
+        "update_button": "Mettre à jour",
         "cancel_button": "Annuler",
         "create_success_message": "Le livre a été ajouté avec succès",
         "update_success_message": "Le livre a été mis à jour avec succès",
