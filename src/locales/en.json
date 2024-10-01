@@ -42,6 +42,8 @@
         "is_wishlisted_label": "Add to my wishlist?",
         "note_label": "Note",
         "note_description": "What did you think of this book?",
+        "crop_image": "Crop image",
+        "crop_button": "Crop",
         "submit_button": "Add",
         "update_button": "Update",
         "cancel_button": "Cancel",

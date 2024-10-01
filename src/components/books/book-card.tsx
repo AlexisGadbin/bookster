@@ -28,7 +28,7 @@ const BookCard = (props: BookCardProps) => {
           src={book.coverImageUrl}
           alt="Book cover"
           className={cn(
-            'aspect-[3/4] h-28 w-20 object-cover transition-all hover:scale-105 sm:h-36 sm:w-28 md:h-44 md:w-32 lg:h-52 lg:w-36 xl:h-64 xl:w-44'
+            'aspect-[2/3] w-20 object-cover transition-all hover:scale-105 sm:w-28 md:w-32 lg:w-36 xl:w-44'
           )}
         />
       </div>
