@@ -8,6 +8,7 @@ import { Star } from 'lucide-react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { Icons } from '../icons'
 import { Button } from '../ui/button'
 import { Checkbox } from '../ui/checkbox'
 import {
@@ -115,6 +116,8 @@ const BookForm = (props: BookFormProps) => {
       addBookMutation.mutate(formData)
     }
   }
+
+  const isLoading = addBookMutation.isPending || updateBookMutation.isPending
 
   return (
     <Form {...form}>
@@ -232,7 +235,10 @@ const BookForm = (props: BookFormProps) => {
 
         <div className="flex w-full flex-col gap-4">
           <p>{message ? <p>{message}</p> : null}</p>
-          <Button type="submit">
+          <Button disabled={isLoading}>
+            {isLoading && (
+              <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+            )}
             {existingBook
               ? t('add_book.form.update_button')
               : t('add_book.form.submit_button')}

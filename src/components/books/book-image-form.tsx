@@ -7,6 +7,7 @@ import { useState } from 'react'
 import Cropper, { Area, Point } from 'react-easy-crop'
 import { UseFormReturn } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
+import { Icons } from '../icons'
 import { Button } from '../ui/button'
 import { Dialog, DialogContent, DialogFooter, DialogHeader } from '../ui/dialog'
 import { FormControl, FormField, FormItem, FormMessage } from '../ui/form'
@@ -26,6 +27,7 @@ type Crop = {
 const BookImageForm = (props: BookImageFormProps) => {
   const { form, existingBook, imageType } = props
   const [isCropping, setIsCropping] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const { t } = useTranslation()
 
   const imageUrl =
@@ -39,6 +41,7 @@ const BookImageForm = (props: BookImageFormProps) => {
   const [image, setImage] = useState<File | undefined>(undefined)
 
   const onCropComplete = (_: Area, croppedAreaPixels: Area) => {
+    if (isLoading) return
     setCroppedAreaPixels(croppedAreaPixels)
   }
   const coverImageRef = form.register(imageType)
@@ -49,6 +52,7 @@ const BookImageForm = (props: BookImageFormProps) => {
 
   const handleCrop = async () => {
     if (!croppedAreaPixels) return
+    setIsLoading(true)
     const resizedImage: Buffer = await resizeImage({
       x: croppedAreaPixels.x,
       y: croppedAreaPixels.y,
@@ -64,6 +68,7 @@ const BookImageForm = (props: BookImageFormProps) => {
     setImage(newImage)
     form.setValue(imageType, dataTransfer.files)
     setIsCropping(false)
+    setIsLoading(false)
   }
 
   return (
@@ -144,7 +149,10 @@ const BookImageForm = (props: BookImageFormProps) => {
                 >
                   {t('add_book.form.cancel_button')}
                 </Button>
-                <Button type="submit" onClick={handleCrop}>
+                <Button disabled={isLoading} onClick={handleCrop}>
+                  {isLoading && (
+                    <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
+                  )}
                   {t('add_book.form.crop_button')}
                 </Button>
               </div>
