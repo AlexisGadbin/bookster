@@ -11,4 +11,7 @@ export type BookModel = {
   backCoverImageUrl?: string
   isWishlisted: boolean
   note?: number
+  isInLibrary: boolean
+  isRead: boolean
+  isNextRead: boolean
 }

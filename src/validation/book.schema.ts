@@ -23,6 +23,9 @@ export const bookSchema = z.object({
   authorName: z.string().min(1, 'add_book.errors.author_name_required'),
   isWishlisted: z.boolean(),
   note: z.number().min(0).max(10),
+  isRead: z.boolean().default(false),
+  isNextRead: z.boolean().default(false),
+  isInLibrary: z.boolean().default(false),
 })
 
 export type EditBookType = z.infer<typeof bookSchema>

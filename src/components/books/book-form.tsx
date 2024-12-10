@@ -47,6 +47,9 @@ const BookForm = (props: BookFormProps) => {
       backCoverImage: undefined,
       isWishlisted: existingBook?.isWishlisted || false,
       note: Number(existingBook?.note) || 4,
+      isInLibrary: existingBook?.isInLibrary || false,
+      isRead: existingBook?.isRead || false,
+      isNextRead: existingBook?.isNextRead || false,
     },
   })
 
@@ -102,6 +105,9 @@ const BookForm = (props: BookFormProps) => {
     formData.append('description', data.description)
     formData.append('authorName', data.authorName)
     formData.append('isWishlisted', String(data.isWishlisted))
+    formData.append('isInLibrary', String(data.isInLibrary))
+    formData.append('isRead', String(data.isRead))
+    formData.append('isNextRead', String(data.isNextRead))
     formData.append('note', String(data.note))
     if (data.coverImage && data.coverImage[0]) {
       formData.append('coverImage', data.coverImage[0])
@@ -139,6 +145,80 @@ const BookForm = (props: BookFormProps) => {
           )}
         />
 
+        <FormField
+          control={form.control}
+          name="authorName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>{t('add_book.form.author_label')}</FormLabel>
+              <FormControl>
+                <Input
+                  {...field}
+                  placeholder={t('add_book.form.author_placeholder')}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isInLibrary"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-2">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel className="!m-0">
+                {t('add_book.form.is_in_library_label')}
+              </FormLabel>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isRead"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-2">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel className="!m-0">
+                {t('add_book.form.is_read_label')}
+              </FormLabel>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="isNextRead"
+          render={({ field }) => (
+            <FormItem className="flex items-center gap-2">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <FormLabel className="!m-0">
+                {t('add_book.form.is_next_read_label')}
+              </FormLabel>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <div className="flex gap-4">
           <BookImageForm
             existingBook={existingBook}
@@ -169,22 +249,7 @@ const BookForm = (props: BookFormProps) => {
             </FormItem>
           )}
         />
-        <FormField
-          control={form.control}
-          name="authorName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>{t('add_book.form.author_label')}</FormLabel>
-              <FormControl>
-                <Input
-                  {...field}
-                  placeholder={t('add_book.form.author_placeholder')}
-                />
-              </FormControl>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
+
         <FormField
           control={form.control}
           name="isWishlisted"
