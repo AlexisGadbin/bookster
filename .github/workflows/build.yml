@@ -45,7 +45,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          passphrase: ${{ secrets.PASSPHRASE }}
           script: |
             cd /home/bookster
             docker service update --image ghcr.io/alexisgadbin/bookster:${{ github.sha }} bookster_client --force --with-registry-auth
