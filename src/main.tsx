@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import './i18n'
 import './index.css'
 import HomePage from './pages/HomePage'
 import PrivacyPolicy from './pages/PrivacyPolicy'

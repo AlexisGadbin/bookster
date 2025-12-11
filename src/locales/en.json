@@ -1,0 +1,74 @@
+{
+  "home": {
+    "title": "Bookster",
+    "subtitle": "Manage your book collection and share your literary discoveries with friends.",
+    "downloadTitle": "Download the iOS app",
+    "downloadDescription": "Bookster is available for free on the App Store",
+    "downloadButton": "Download on the App Store",
+    "privacyLink": "Privacy Policy"
+  },
+  "privacy": {
+    "backToHome": "← Back to home",
+    "title": "Terms of Service",
+    "subtitle": "Privacy Policy",
+    "lastUpdated": "Last updated: {{date}}",
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "Bookster places the utmost importance on protecting your privacy. This privacy policy describes how we handle your personal data when you use our iOS mobile application."
+      },
+      "storage": {
+        "title": "2. Data Storage",
+        "content": "The application follows a \"privacy by design\" approach. Your data is securely stored on our servers (Supabase) and is linked to your user account."
+      },
+      "dataCollected": {
+        "title": "3. Data Collected",
+        "intro": "We only collect data necessary for the application to function:",
+        "items": {
+          "account": "<strong>Account information</strong>: First name, last name, email address (via Apple Sign In)",
+          "library": "<strong>Personal library</strong>: Added books, notes, ratings, reading statuses",
+          "social": "<strong>Social data</strong>: Follow relationships, privacy settings",
+          "photos": "<strong>Photos</strong>: Profile picture and book covers (optional)"
+        },
+        "deletion": "Deleting your account results in the permanent deletion of all your personal data."
+      },
+      "dataNotCollected": {
+        "title": "4. Data We Do NOT Collect",
+        "intro": "Bookster does not collect:",
+        "items": {
+          "navigation": "Detailed navigation or usage data",
+          "location": "Geolocation data",
+          "cookies": "Tracking cookies",
+          "advertising": "Advertising identifiers",
+          "technical": "Technical information about your device (except for crash reports)"
+        }
+      },
+      "security": {
+        "title": "5. Security",
+        "content": "No method of transmission over the Internet or electronic storage is completely secure. While we implement appropriate security measures (encryption, Apple Sign In authentication, Row Level Security), you are responsible for protecting your login credentials."
+      },
+      "rights": {
+        "title": "6. Your Rights",
+        "content": "You can access, modify, or delete your data at any time directly from the application. Deleting your account results in the permanent deletion of all your data."
+      },
+      "modifications": {
+        "title": "7. Modifications",
+        "content": "We reserve the right to modify this privacy policy at any time. Significant changes will be notified to you via the application."
+      },
+      "contact": {
+        "title": "8. Contact",
+        "content": "For any questions regarding this policy, you can contact us via the contact form on"
+      },
+      "permissions": {
+        "title": "9. App Permissions",
+        "intro": "The application may request access to:",
+        "items": {
+          "camera": "<strong>Camera</strong>: To scan ISBN barcodes and take cover photos",
+          "photos": "<strong>Photo library</strong>: To customize your profile and add book covers",
+          "notifications": "<strong>Notifications</strong>: To receive alerts about social interactions (follow requests, etc.)"
+        },
+        "optional": "These permissions are optional and can be managed in your device settings."
+      }
+    }
+  }
+}

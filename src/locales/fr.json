@@ -1,0 +1,74 @@
+{
+  "home": {
+    "title": "Bookster",
+    "subtitle": "Gérez votre collection de livres et partagez vos découvertes littéraires avec vos amis.",
+    "downloadTitle": "Téléchargez l'application iOS",
+    "downloadDescription": "Bookster est disponible gratuitement sur l'App Store",
+    "downloadButton": "Télécharger sur l'App Store",
+    "privacyLink": "Politique de confidentialité"
+  },
+  "privacy": {
+    "backToHome": "← Retour à l'accueil",
+    "title": "Conditions Générales d'Utilisation",
+    "subtitle": "Politique de Confidentialité",
+    "lastUpdated": "Dernière mise à jour : {{date}}",
+    "sections": {
+      "introduction": {
+        "title": "1. Introduction",
+        "content": "Bookster accorde une importance primordiale à la protection de votre vie privée. Cette politique de confidentialité décrit comment nous gérons vos données personnelles lorsque vous utilisez notre application mobile iOS."
+      },
+      "storage": {
+        "title": "2. Stockage des données",
+        "content": "L'application suit une approche \"privacy by design\". Vos données sont stockées de manière sécurisée sur nos serveurs (Supabase) et sont liées à votre compte utilisateur."
+      },
+      "dataCollected": {
+        "title": "3. Données collectées",
+        "intro": "Nous collectons uniquement les données nécessaires au fonctionnement de l'application :",
+        "items": {
+          "account": "<strong>Informations de compte</strong> : Nom, prénom, adresse e-mail (via Apple Sign In)",
+          "library": "<strong>Bibliothèque personnelle</strong> : Livres ajoutés, notes, évaluations, statuts de lecture",
+          "social": "<strong>Données sociales</strong> : Relations de suivi, paramètres de confidentialité",
+          "photos": "<strong>Photos</strong> : Photo de profil et couvertures de livres (optionnelles)"
+        },
+        "deletion": "La suppression de votre compte entraîne la suppression définitive de toutes vos données personnelles."
+      },
+      "dataNotCollected": {
+        "title": "4. Données que nous ne collectons PAS",
+        "intro": "Bookster ne collecte pas :",
+        "items": {
+          "navigation": "Données de navigation ou d'utilisation détaillées",
+          "location": "Données de géolocalisation",
+          "cookies": "Cookies de tracking",
+          "advertising": "Identifiants publicitaires",
+          "technical": "Informations techniques de votre appareil (sauf pour les rapports de crash)"
+        }
+      },
+      "security": {
+        "title": "5. Sécurité",
+        "content": "Aucune méthode de transmission sur Internet ou de stockage électronique n'est totalement sécurisée. Bien que nous mettions en œuvre des mesures de sécurité appropriées (chiffrement, authentification via Apple Sign In, Row Level Security), vous êtes responsable de la protection de vos identifiants de connexion."
+      },
+      "rights": {
+        "title": "6. Vos droits",
+        "content": "Vous pouvez à tout moment accéder, modifier ou supprimer vos données directement depuis l'application. La suppression de votre compte entraîne la suppression définitive de toutes vos données."
+      },
+      "modifications": {
+        "title": "7. Modifications",
+        "content": "Nous nous réservons le droit de modifier cette politique de confidentialité à tout moment. Les modifications importantes vous seront notifiées via l'application."
+      },
+      "contact": {
+        "title": "8. Contact",
+        "content": "Pour toute question concernant cette politique, vous pouvez nous contacter via le formulaire de contact sur"
+      },
+      "permissions": {
+        "title": "9. Permissions de l'application",
+        "intro": "L'application peut demander l'accès à :",
+        "items": {
+          "camera": "<strong>Appareil photo</strong> : Pour scanner les codes-barres ISBN et prendre des photos de couvertures",
+          "photos": "<strong>Bibliothèque de photos</strong> : Pour personnaliser votre profil et ajouter des couvertures de livres",
+          "notifications": "<strong>Notifications</strong> : Pour recevoir des alertes sur les interactions sociales (demandes de suivi, etc.)"
+        },
+        "optional": "Ces permissions sont facultatives et peuvent être gérées dans les paramètres de votre appareil."
+      }
+    }
+  }
+}
